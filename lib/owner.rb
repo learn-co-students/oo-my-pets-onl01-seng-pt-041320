@@ -1,3 +1,4 @@
+require "pry"
 class Owner 
   
   @@all = []
@@ -44,16 +45,61 @@ end
   end 
   
    def buy_cat(name)
-    @pets[:cats] << Cat.new(name, owner)
+     Cat.new(name, self)
   end
 	
 	def play_with_cats
-    @@pets[:cats].each do |cat|
+    cats.each do |cat|
       cat.mood = 'happy'
     end
   end
+  
+  def buy_dog(name)
+    Dog.new(name, self)
+  end 
+  
+  def walk_dogs
+    
+    dogs.each do |dog|
+      dog.mood = 'happy'
+    end 
+  end 
+  
+  def feed_cat
+    cats.each do |cat|
+    cat.mood = 'happy'
+    end 
+  end 
+    
+    def sell_pets 
+      @pets.each do |type , name|
+      name.each do |pet|
+      pet.mood = 'nervous'
+    end 
+  end 
+  @pets = {}
+end 
+        
+    def feed_cats 
+      @cat.each do |cat|
+        cat.mood = 'happy'
+      end 
+    end 
+    
+    def list_pets
+    num_dogs = @pets[:dogs].size
+    num_cats = @pets[:cats].size
+    return "I have #{num_dogs} dog(s), and #{num_cats} cat(s)."
+  end
+  
+   def sell_pets
+    @pets.collect do |species, owner|
+      owner.each do |pet|
+        pet.mood = "nervous"
+      end
+      owner.clear
+    end
+  end
+
 end 
 
-def owner 
-  @self
-end 
