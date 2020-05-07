@@ -7,7 +7,7 @@ class Owner
   
   def initialize(name)
     @species = "human"
-    @pets = {cats: [], dogs:[]}
+    
     @name = name 
     @@all << self 
   end 
@@ -28,9 +28,6 @@ class Owner
     "I am a #{@species}."
   end
   
-  def pets
-    @@pets
-  end
   
   def cats 
     Cat.all.select do |cat|
@@ -71,34 +68,29 @@ end
     end 
   end 
     
-    def sell_pets 
-      @pets.each do |type , name|
-      name.each do |pet|
-      pet.mood = 'nervous'
-    end 
-  end 
-  @pets = {}
-end 
         
     def feed_cats 
-      @cat.each do |cat|
+      self.cats.each do |cat|
         cat.mood = 'happy'
       end 
     end 
     
     def list_pets
-    num_dogs = @pets[:dogs].size
-    num_cats = @pets[:cats].size
+    num_dogs = self.dogs.size
+    num_cats = self.cats.size
     return "I have #{num_dogs} dog(s), and #{num_cats} cat(s)."
   end
   
    def sell_pets
-    @pets.collect do |species, owner|
-      owner.each do |pet|
-        pet.mood = "nervous"
-      end
-      owner.clear
+    self.cats.each do |cats|
+        cats.mood = "nervous"
+        cats.owner = nil 
+        # binding.pry
     end
+    self.dogs.each do |dogs|
+      dogs.mood = "nervous"
+      dogs.owner = nil 
+    end 
   end
 
 end 
