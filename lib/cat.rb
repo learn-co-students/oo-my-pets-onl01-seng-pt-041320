@@ -4,18 +4,16 @@ class Cat
   attr_reader :name
   @@all = []
 
-  def initialize(pet_name, owner)
-    @name = pet_name
+  def initialize(cat_name, owner)
+    @name = cat_name
     @owner = owner
     @mood = "nervous"
     @@all << self
-  end
-
-  def mood
-    @mood
+    #binding.pry
   end
 
   def self.all
     @@all
+    #binding.pry
   end
 end

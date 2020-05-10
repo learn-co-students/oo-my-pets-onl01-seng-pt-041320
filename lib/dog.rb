@@ -3,8 +3,8 @@ class Dog
   attr_reader :name
   @@all = []
 
-  def initialize(pet_name, owner)
-    @name = pet_name
+  def initialize(dog_name, owner)
+    @name = dog_name
     @owner = owner
     @mood = "nervous"
     @@all << self
