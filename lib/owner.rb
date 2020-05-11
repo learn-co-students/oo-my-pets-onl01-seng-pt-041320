@@ -18,14 +18,14 @@ class Owner
   end
 
   def cats
-    Cat.all.find_all{|cat_owner| cat_owner.owner == self}    
+    Cat.all.find_all{|cat| cat.owner == self}    
     #@pet_cats
     #@pets_owned[:cat]
     #binding.pry
   end
 
   def dogs
-    Dog.all.find_all{|dog_owner| dog_owner.owner == self}
+    Dog.all.find_all{|dog| dog.owner == self}
     #@pet_dogs
     #@pets_owned[:dog]
   end
