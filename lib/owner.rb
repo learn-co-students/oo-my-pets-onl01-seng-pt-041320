@@ -2,6 +2,7 @@ require 'pry'
 class Owner
   # code goes here
   attr_reader :name, :species
+  attr_accessor :pets
 
   @@all = []
   @@pets = {:dogs => [], :cats => []}
@@ -29,20 +30,49 @@ class Owner
   end
 
   def cats
-    Cat.all
+    Cat.all.select{|cat| cat.owner == self}
   end
 
   def dogs
-    Dog.all
+    Dog.all.select{|dog| dog.owner == self}
   end
 
   def buy_cat(cat)
-    #binding.pry
-    @@pets[:cats] << Cat.new(cat, self.name)
+    Cat.new(cat, self)
   end
 
-  def buy_dog(name)
-    @@pets[:dogs] << Dog.new(name, Owner.name)
+  def buy_dog(dog)
+    Dog.new(dog, self)
   end
+
+  def walk_dogs
+    dogs.each do |dog|
+      dog.mood = "happy"
+    end
+  end
+
+  def feed_cats
+    cats.each do |cat|
+      cat.mood = "happy"
+    end
+  end
+
+  def sell_pets
+    #binding.pry
+    x = dogs
+    y = cats
+    x.zip(y).map do |dog, cat|
+      dog.mood = "nervous"
+      cat.mood = "nervous"
+      dog.owner = nil
+      cat.owner = nil
+    end
+  end
+
+  def list_pets
+    return "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+  end
+
+
 
 end
