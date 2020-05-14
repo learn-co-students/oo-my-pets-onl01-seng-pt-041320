@@ -5,20 +5,17 @@ class Dog
   attr_accessor :owner, :mood
   attr_reader :name
   
-  @@all = []
+  @@dogs = []
 
   def initialize(name, owner)
     @name = name
     @owner = owner
     @mood = "nervous"
-  end
-
-  def save
-    @@all << self
+    @@dogs << self
   end
 
   def self.all
-    @@all
+    @@dogs
   end
 
 end
