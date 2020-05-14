@@ -1,3 +1,12 @@
 class Owner
-  # code goes here
+  attr_accessor 
+  
+  def initialize(name)
+    @name = name
+  end 
+  
+  def name 
+    @name.freeze
+  end
+  
 end

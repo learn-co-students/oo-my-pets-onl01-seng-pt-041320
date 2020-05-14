@@ -1,3 +1,10 @@
 class Dog
-  # code goes here
+  attr_accessor :owner
+  
+  def intialize(name)
+    @name = name
+  end
+  
+  
+  
 end
