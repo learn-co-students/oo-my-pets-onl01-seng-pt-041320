@@ -55,14 +55,10 @@ class Owner
   def sell_pets
     owner = @@all.map{|x| x}
     dogs.map do |info|
-      if owner == info.owner
         info.mood = "nervous"
-      end
     end
     cats.map do |info|
-      if owner == info.owner
         info.mood = "nervous"
-      end
     end
     
     
