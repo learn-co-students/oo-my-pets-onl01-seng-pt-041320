@@ -54,9 +54,9 @@ class Owner
   
   def sell_pets
     dogs.map {|info| info.mood = "nervous"}
-    Dog.owner.clear
+    dogs.map {|info| info.owner = nil}
     cats.map {|info| info.mood = "nervous"}
-    Cat.owner.clear
+    cats.map {|info| info.owner = nil}
 #    binding.pry
   end
   
