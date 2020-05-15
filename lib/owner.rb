@@ -53,17 +53,15 @@ class Owner
   end
   
   def sell_pets
-    owner = @@all.map{|x| x}
-    dogs.map do |info|
-        info.mood = "nervous"
-    end
-    cats.map do |info|
-        info.mood = "nervous"
-    end
+    dogs.map {|info| info.mood = "nervous"} 
+    cats.map {|info| info.mood = "nervous"}
     
-    
+#    binding.pry
   end
   
+  def list_pets 
+    "I have #{dogs.count} dog(s), and #{cats.count} cat(s)."
+  end 
   
   
 end
