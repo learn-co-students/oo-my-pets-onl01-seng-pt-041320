@@ -1,8 +1,19 @@
+require 'pry'
 class Cat
-  attr_accessor :owner
+  attr_accessor :owner, :mood
+  attr_reader :name
   
-  def intialize(name)
-    @name = name
+  @@all = []
+  
+  def initialize(name, owner)
+    @name = name.freeze
+    @owner = owner
+    @mood = "nervous" 
+    @@all << self
+  end
+  
+  def self.all 
+    @@all 
   end
   
   
