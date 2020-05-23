@@ -1,3 +1,5 @@
+require "pry"
+
 require_relative 'spec_helper.rb'
 
 describe "Associations" do
@@ -122,10 +124,11 @@ describe "Associations" do
         [fido, tabby].each {|o| o.mood = "happy" }
 
         @owner.sell_pets
-
+    #    binding.pry
         [fido, tabby].each { |o| expect(o.owner).to be(nil) }
         expect(@owner.cats.count).to eq(0)
         expect(@owner.dogs.count).to eq(0)
+
       end
     end
 
