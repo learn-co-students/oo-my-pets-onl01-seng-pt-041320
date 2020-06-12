@@ -1,11 +1,8 @@
-require 'pry'
-
 class Owner
-  attr_accessor
-  attr_reader :name, :species
   @@all = []
+  attr_reader :name, :species
 
-  def initialize (name, species="human")
+  def initialize(name, species = "human")
     @name = name
     @species = species
     @@all << self
@@ -20,7 +17,7 @@ class Owner
   end
 
   def self.count
-    self.all.count
+  self.all.count
   end
 
   def self.reset_all
@@ -28,15 +25,15 @@ class Owner
   end
 
   def cats
-    Cat.all.select{|name| name.owner == self}
+    Cat.all.find_all {|cat| cat.owner == self}
   end
 
   def dogs
-    Dog.all.select{|name| name.owner == self}
+    Dog.all.filter {|dog| dog.owner == self}
   end
 
   def buy_cat(name)
-    Cat.new(name, self)
+      Cat.new(name, self)
   end
 
   def buy_dog(name)
@@ -44,24 +41,30 @@ class Owner
   end
 
   def walk_dogs
-    self.dogs.each {|dog| dog.mood="happy"}
+    self.dogs.map {|dog| dog.mood = "happy"}
   end
+
   def feed_cats
-    self.cats.each {|cat| cat.mood="happy"}
+    self.cats.map {|cat| cat.mood = "happy"}
   end
+
   def sell_pets
-    self.dogs.each do |dog|
+    self.dogs.map do |dog|
       dog.mood="nervous"
       dog.owner=nil
-    end
-    self.cats.each do |cat|
-      cat.mood="nervous"
-      cat.owner= nil
-    end
+  end
+    self.cats.map do |cat|
+        cat.mood="nervous"
+        cat.owner= nil
+      end
   end
 
   def list_pets
-    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+     "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
   end
 
 end
+
+
+  
+
